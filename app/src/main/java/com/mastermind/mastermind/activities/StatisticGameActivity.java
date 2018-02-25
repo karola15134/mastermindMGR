@@ -14,8 +14,11 @@ import android.widget.ListView;
 import com.mastermind.mastermind.R;
 import com.mastermind.mastermind.adapter.StatisticListViewAdapter;
 import com.mastermind.mastermind.bean.db.StatisticGame;
+import com.mastermind.mastermind.enums.GameVariantEnum;
+import com.mastermind.mastermind.enums.SolutionEnum;
 import com.mastermind.mastermind.service.DBhandler;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,7 +30,6 @@ public class StatisticGameActivity extends AppCompatActivity implements
 
     ListView menu;
     List<StatisticGame> items;
-    DBhandler db = new DBhandler(this);
     SimpleDateFormat formatDate = new SimpleDateFormat("dd MM yyyy");
 
 
@@ -37,32 +39,25 @@ public class StatisticGameActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_statisticlist);
 
 
-        items = new ArrayList<StatisticGame>();
+            DBhandler db = new DBhandler(this);
+            Date date = new Date();
+            String dateS = formatDate.format(date);
 
-
-        for(int i=0;i<5;i++){
-            StatisticGame stat = new StatisticGame(new Date(),5,10);
-            StatisticGame stat2 = new StatisticGame(new Date(),7,20);
-          //  db.addStat(stat);
-         //   db.addStat(stat2);
-            items.add(stat);
-            items.add(stat2);
-        }
+            List<StatisticGame> items = db.getAllStat();
 
 
 
 
 
+            menu = (ListView) findViewById(R.id.statisticMenuListView);
 
 
+            StatisticListViewAdapter adapter = new StatisticListViewAdapter(this,
+                    R.layout.statisticlistitem, items);
+            menu.setAdapter(adapter);
+            menu.setOnItemClickListener(this);
 
-        menu = (ListView) findViewById(R.id.statisticMenuListView);
 
-
-        StatisticListViewAdapter adapter = new StatisticListViewAdapter(this,
-                R.layout.statisticlistitem, items);
-        menu.setAdapter(adapter);
-        menu.setOnItemClickListener(this);
 
     }
 

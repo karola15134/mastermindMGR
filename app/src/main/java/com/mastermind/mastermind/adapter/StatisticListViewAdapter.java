@@ -18,6 +18,8 @@ import com.mastermind.mastermind.R;
 import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.bean.layout.Item;
 
+import org.w3c.dom.Text;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -35,8 +37,9 @@ public class StatisticListViewAdapter extends ArrayAdapter<StatisticGame> {
     private class ViewHolder {
 
         TextView date;
-        TextView colorsCount;
+        TextView typeOfGame;
         TextView attemptsCount;
+        TextView typeOfSolution;
 
     }
 
@@ -53,21 +56,30 @@ public class StatisticListViewAdapter extends ArrayAdapter<StatisticGame> {
             holder = new StatisticListViewAdapter.ViewHolder();
 
             holder.date = (TextView) convertView.findViewById(R.id.dateTxt);
-            holder.colorsCount = (TextView) convertView.findViewById(R.id.colorsCountTxt);
+            holder.typeOfGame = (TextView) convertView.findViewById(R.id.colorsCountTxt);
             holder.attemptsCount = (TextView) convertView.findViewById(R.id.attemptsCountTxt);
+            holder.typeOfSolution = (TextView) convertView.findViewById(R.id.typeOfSolution);
             convertView.setTag(holder);
         } else
             holder = (StatisticListViewAdapter.ViewHolder) convertView.getTag();
 
-        Date date = rowItem.getDate();
-        String dateStr=format.format(date);
-        holder.date.setText(dateStr);
+        String date = rowItem.getDate();
+        holder.date.setText(date);
 
         Integer attemptsCountInt = rowItem.getAttemptsCount();
         holder.attemptsCount.setText(attemptsCountInt.toString());
 
-        Integer colorsCountInt = rowItem.getColorsCount();
-        holder.colorsCount.setText(colorsCountInt.toString());
+        String gameType="";
+        if(rowItem.getTypeOfGame().toString().equals("CLASSIC"))  gameType="6 kolorów ";
+        if(rowItem.getTypeOfGame().toString().equals("SUPER"))  gameType="8 kolorów" ;
+        holder.typeOfGame.setText(gameType);
+
+        String solution="";
+        if ( rowItem.getTypeOfSolution().toString().equals("USER")) solution="Gracz";
+        if ( rowItem.getTypeOfSolution().toString().equals("GENETIC")) solution="Algorytm Genetyczny";
+        holder.typeOfSolution.setText(solution);
+
+
 
         return convertView;
     }

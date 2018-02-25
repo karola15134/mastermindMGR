@@ -1,40 +1,43 @@
 package com.mastermind.mastermind.bean.db;
 
 
+import com.mastermind.mastermind.enums.GameVariantEnum;
+import com.mastermind.mastermind.enums.SolutionEnum;
+
 import java.time.LocalDate;
 import java.util.Date;
 
 public class StatisticGame {
     private int id;
-    private Date date;
-    private int colorsCount;
+    private String date;
+    private GameVariantEnum typeOfGame;
     private int attemptsCount;
+    private SolutionEnum typeOfSolution;
 
 
     public StatisticGame() {
     }
 
-    public StatisticGame(Date date, int colorsCount, int attemptsCount) {
+    public StatisticGame(String date, GameVariantEnum typeOfGame, int attemptsCount,SolutionEnum typeOfSolution) {
         this.date = date;
-        this.colorsCount = colorsCount;
+        this.typeOfGame = typeOfGame;
         this.attemptsCount = attemptsCount;
+        this.typeOfSolution = typeOfSolution;
     }
 
-    public Date getDate() {
+    public int getId() { return id; }
+
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public int getColorsCount() {
-        return colorsCount;
-    }
+    public GameVariantEnum getTypeOfGame() { return typeOfGame; }
 
-    public void setColorsCount(int colorsCount) {
-        this.colorsCount = colorsCount;
-    }
+    public void setTypeOfGame(GameVariantEnum typeOfGame) { this.typeOfGame = typeOfGame; }
 
     public int getAttemptsCount() {
         return attemptsCount;
@@ -48,5 +51,17 @@ public class StatisticGame {
         this.id = id;
     }
 
+    public SolutionEnum getTypeOfSolution() { return typeOfSolution; }
 
+    public void setTypeOfSolution(SolutionEnum typeOfSolution) { this.typeOfSolution = typeOfSolution; }
+
+    @Override
+    public String toString() {
+        return "StatisticGame{" +
+                "id=" + id +
+                ", date=" + date +
+                ", colorsCount=" + getTypeOfGame() +
+                ", attemptsCount=" + attemptsCount +
+                '}';
+    }
 }
