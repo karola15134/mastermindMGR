@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">mastermind</string>
     <string name="Statystyki">statystyki</string>
+    <string name="Data"><i><b>Data</b></i></string>
+    <string name="Wersja"><i><b>Wersja gry</b></i></string>
+    <string name="Proby"><i><b>Ilość prób</b></i></string>
+    <string name="Rozwiazanie"> <i><b> Rozwiązanie</b></i></string>
 </resources>
