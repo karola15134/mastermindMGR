@@ -21,9 +21,14 @@
             android:entries="@array/spinnerItems" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:id="@+id/clearButton"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:text="Wyczyść statystyki" />
+            android:text="Wyczyść statystyki"
+            android:textSize="10sp"
+            android:clickable="true"
+            android:onClick="onButtonClick"
+            />
     </TableRow>
 
     <ListView
