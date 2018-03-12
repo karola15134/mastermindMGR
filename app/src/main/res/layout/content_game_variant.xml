@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.mastermind.mastermind.activities.GameVariantActivity"
+    tools:context="com.mastermind.mastermind.activities.game.GameVariantActivity"
     tools:showIn="@layout/activity_game_variant">
 
     <Button
@@ -16,6 +16,7 @@
         android:text="6 kolorów"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
+        android:onClick="onButtonClick"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
@@ -25,5 +26,6 @@
         android:text="8 kolorów"
         app:layout_constraintTop_toBottomOf="@+id/classicButton"
         tools:ignore="MissingConstraints"
+        android:onClick="onButtonClick"
         tools:layout_editor_absoluteX="0dp" />
 </android.support.constraint.ConstraintLayout>

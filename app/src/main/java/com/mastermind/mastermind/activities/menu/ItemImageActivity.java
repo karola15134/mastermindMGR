@@ -1,17 +1,18 @@
-package com.mastermind.mastermind.activities;
+package com.mastermind.mastermind.activities.menu;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
 import com.mastermind.mastermind.R;
+import com.mastermind.mastermind.activities.game.GameVariantActivity;
+import com.mastermind.mastermind.activities.statistic.StatisticGameActivity;
 import com.mastermind.mastermind.adapter.CustomListViewAdapter;
 import com.mastermind.mastermind.bean.layout.Item;
 

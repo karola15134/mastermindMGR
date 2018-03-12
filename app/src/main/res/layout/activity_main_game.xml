@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mastermind.mastermind.activities.game.GameVariantActivity">
+    tools:context="com.mastermind.mastermind.activities.game.MainGameActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,6 +20,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_game_variant" />
+    <include layout="@layout/content_main_game" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.mastermind.mastermind.activities;
+package com.mastermind.mastermind.activities.settings;
 
 import android.content.res.Configuration;
 import android.os.Bundle;

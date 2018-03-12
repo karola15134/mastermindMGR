@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.ItemImageActivity">
+        <activity android:name=".activities.menu.ItemImageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,15 +17,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.StatisticGameActivity"
+            android:name=".activities.statistic.StatisticGameActivity"
             android:label="Statystyki"
-            android:parentActivityName=".activities.ItemImageActivity" />
+            android:parentActivityName=".activities.menu.ItemImageActivity" />
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".activities.settings.SettingsActivity"
             android:label="@string/title_activity_settings" />
         <activity
-            android:name=".activities.GameVariantActivity"
+            android:name=".activities.game.GameVariantActivity"
             android:label="@string/title_activity_game_variant"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.game.MainGameActivity"
+            android:label="@string/title_activity_main_game"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -1,4 +1,4 @@
-package com.mastermind.mastermind.activities;
+package com.mastermind.mastermind.activities.settings;
 
 import android.annotation.TargetApi;
 import android.content.Context;

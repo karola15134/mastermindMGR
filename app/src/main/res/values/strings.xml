@@ -85,5 +85,6 @@
     <string name="pref_title_vibrate">Vibrate</string>
 
     <string name="title_activity_game_variant">Wariant gry</string>
+    <string name="title_activity_main_game">Gra </string>
 
 </resources>
