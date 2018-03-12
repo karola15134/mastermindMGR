@@ -86,6 +86,12 @@ public class ItemImageActivity extends Activity implements
                 startActivity(intent);
                 break;
 
+            case "Graj" :
+                startActivity(new Intent (this,GameVariantActivity.class));
+                break;
+
+
+
         }
 
     }
