@@ -1,4 +1,4 @@
-package com.mastermind.mastermind.service;
+package com.mastermind.mastermind.service.db;
 
 
 import android.content.ContentValues;

@@ -18,7 +18,7 @@ import com.mastermind.mastermind.adapter.StatisticListViewAdapter;
 import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.enums.GameVariantEnum;
 import com.mastermind.mastermind.enums.SolutionEnum;
-import com.mastermind.mastermind.service.DBhandler;
+import com.mastermind.mastermind.service.db.DBhandler;
 
 
 import java.text.SimpleDateFormat;

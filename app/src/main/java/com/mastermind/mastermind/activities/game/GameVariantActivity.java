@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.mastermind.mastermind.R;
+import com.mastermind.mastermind.enums.GameVariantEnum;
 
 public class GameVariantActivity extends AppCompatActivity {
 
@@ -34,9 +35,9 @@ public class GameVariantActivity extends AppCompatActivity {
 
     public void onButtonClick(View view) {
 
-        String gameVariant="";
-        if(view.getId() == R.id.classicButton) gameVariant="CLASSIC";
-        if(view.getId() == R.id.superButton) gameVariant="SUPER";
+        GameVariantEnum gameVariant=GameVariantEnum.CLASSIC;
+        if(view.getId() == R.id.classicButton) gameVariant=GameVariantEnum.CLASSIC;
+        if(view.getId() == R.id.superButton) gameVariant=GameVariantEnum.SUPER;
 
         Intent intent = new Intent(this,MainGameActivity.class);
         intent.putExtra("gameVariant",gameVariant);
