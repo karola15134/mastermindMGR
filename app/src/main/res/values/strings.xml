@@ -10,6 +10,15 @@
         <item>Gracz</item>
         <item>Algorytm</item>
     </string-array>
+
+    <string name="color1">color1</string>
+    <string name="color2">color2</string>
+    <string name="color3">color3</string>
+    <string name="color4">color4</string>
+    <string name="color5">color5</string>
+    <string name="color6">color6</string>
+    <string name="color7">color7</string>
+    <string name="color8">color8</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
