@@ -63,4 +63,8 @@ public class ColorList {
     public List<ColorEnum> getColorsRand() {
         return colorsRand;
     }
+
+    public List<ColorEnum> getColors() {
+        return colors;
+    }
 }
