@@ -1,18 +1,13 @@
 package com.mastermind.mastermind.activities.game;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 
 import com.mastermind.mastermind.R;
-import com.mastermind.mastermind.bean.game.MainClassicGame;
-import com.mastermind.mastermind.bean.game.MainSuperGame;
-import com.mastermind.mastermind.enums.ColorClassicEnum;
-import com.mastermind.mastermind.enums.ColorSuperEnum;
+import com.mastermind.mastermind.bean.game.ColorList;
+import com.mastermind.mastermind.enums.ColorEnum;
 import com.mastermind.mastermind.enums.GameVariantEnum;
 
 import java.util.List;
@@ -32,23 +27,16 @@ public class MainGameActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-
-
         GameVariantEnum variantGame = (GameVariantEnum) extras.get("gameVariant");
 
-        if(variantGame.equals(GameVariantEnum.CLASSIC)) {
-            MainClassicGame game = new MainClassicGame();
 
-            List<ColorClassicEnum> colors = game.getRandomColors();
-            Log.i(colors.toString(), "random colors: ");
-        }
+        ColorList color  = new ColorList(variantGame);
 
-         else if(variantGame.equals(GameVariantEnum.SUPER)) {
-            MainSuperGame game = new MainSuperGame();
+        List<ColorEnum> colorsRand = color.getColorsRand();
+        Log.i(colorsRand.toString(), "random colors: ");
 
-            List<ColorSuperEnum> colors = game.getRandomColors();
-            Log.i(colors.toString(), "random colors: ");
-        }
+
+
 
 
 
