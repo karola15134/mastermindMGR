@@ -19,6 +19,7 @@
     <string name="color6">color6</string>
     <string name="color7">color7</string>
     <string name="color8">color8</string>
+    <string name="attemptLayout">atemptLayout</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Strings related to Settings -->
@@ -95,5 +96,6 @@
 
     <string name="title_activity_game_variant">Wariant gry</string>
     <string name="title_activity_main_game">Gra </string>
+    <string name="pr_by">Próby</string>
 
 </resources>

@@ -21,7 +21,7 @@ public class ColorMap {
      Integer green = Color.parseColor("#9CCC65");
      colorsMap.put(ColorEnum.GREEN,green);
 
-     Integer yellow =Color.parseColor("#FFEB3B");
+     Integer yellow =Color.parseColor("#F4FF81");
      colorsMap.put(ColorEnum.YELLOW,yellow);
 
      Integer light_grey = Color.parseColor("#E0E0E0");
@@ -30,13 +30,13 @@ public class ColorMap {
      Integer dark_grey = Color.parseColor("#757575");
      colorsMap.put(ColorEnum.DARK_GREY,dark_grey);
 
-     Integer orange = Color.parseColor("#FF9800");
+     Integer orange = Color.parseColor("#FFCC80");
      colorsMap.put(ColorEnum.ORANGE,orange);
 
-     Integer dark_blue = Color.parseColor("#1565C0");
+     Integer dark_blue = Color.parseColor("#5C6BC0");
      colorsMap.put(ColorEnum.DARK_BLUE,dark_blue);
 
-     Integer red = Color.parseColor("#EF5350");
+     Integer red = Color.parseColor("#F06292");
      colorsMap.put(ColorEnum.RED,red);
 
 
