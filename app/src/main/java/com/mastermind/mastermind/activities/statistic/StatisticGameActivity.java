@@ -43,10 +43,6 @@ public class StatisticGameActivity extends AppCompatActivity implements
         final Spinner spinner = (Spinner) findViewById(R.id.sortSpinner);
 
 
-        for (int i = 0; i < 10; i++) {
-            db.addStat(new StatisticGame(new Date().toString(), GameVariantEnum.CLASSIC, 10, SolutionEnum.GENETIC_ALG));
-            db.addStat(new StatisticGame(new Date().toString(), GameVariantEnum.CLASSIC, 10, SolutionEnum.USER));
-        }
 
 
         List<StatisticGame> itemsAll = db.getAllStat();
