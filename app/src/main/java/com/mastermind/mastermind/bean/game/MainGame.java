@@ -1,7 +1,12 @@
 package com.mastermind.mastermind.bean.game;
 
+import android.util.Log;
+
+import com.mastermind.mastermind.enums.BlackBoxEnum;
 import com.mastermind.mastermind.enums.ColorEnum;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +17,7 @@ public class MainGame {
 
     private ReverseColorMap reverseMap = new ReverseColorMap();
 
-    public boolean checkAttempt(List<Integer> colorsId,List<ColorEnum> randColors){
+    private boolean checkAttempt(List<Integer> colorsId,List<ColorEnum> randColors){
 
         boolean result = true;
         Map<Integer,ColorEnum> colorsMap =reverseMap.getColorsMap();
@@ -31,6 +36,69 @@ public class MainGame {
 
     }
 
+    public List<BlackBoxEnum> checkAnswer(List<Integer> colorsId,List<ColorEnum> randColors){
 
+        List<BlackBoxEnum> blackBox = new ArrayList<BlackBoxEnum>() ;
+
+          if(!checkAttempt(colorsId,randColors))
+        {
+            blackBox = buildBlackBox(colorsId,randColors);
+        }
+
+        return blackBox;
+    }
+
+    private List<BlackBoxEnum> buildBlackBox(List<Integer> colorsId, List<ColorEnum> randColors) {
+
+        List<BlackBoxEnum> blackBox = new ArrayList<BlackBoxEnum>();
+        Map<Integer,ColorEnum> colorsMap =reverseMap.getColorsMap();
+        Boolean[] array = new Boolean[randColors.size()];
+        Arrays.fill(array, Boolean.FALSE);
+
+
+        // BLACK
+        for(int i=0;i<colorsId.size();i++)
+        {
+            Integer currentColor = colorsId.get(i);
+
+            if(colorsMap.get(currentColor).equals(randColors.get(i)))
+            {
+                blackBox.add(BlackBoxEnum.BLACK);
+                array[i]=true;
+            }
+        }
+
+
+        //WHITE
+
+        for(int i=0;i<colorsId.size();i++){
+
+            Integer currentColor = colorsId.get(i);
+
+            for(int j=0;j<randColors.size();j++)
+            {
+               if(i!=j && colorsMap.get(currentColor).equals(randColors.get(j)))
+               {
+                   if(array[j]==false) {
+                       blackBox.add(BlackBoxEnum.WHITE);
+                       array[j] = true;
+                       Log.i("build box", "wejscie w petle");
+                   }
+               }
+            }
+
+        }
+
+
+
+
+
+        return blackBox;
+
+    }
+
+    public Integer getAttemptCount() {
+        return attemptCount;
+    }
 }
 

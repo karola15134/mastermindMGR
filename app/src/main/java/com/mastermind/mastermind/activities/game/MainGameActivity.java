@@ -33,6 +33,7 @@ import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.bean.game.ColorList;
 import com.mastermind.mastermind.bean.game.ColorMap;
 import com.mastermind.mastermind.bean.game.MainGame;
+import com.mastermind.mastermind.enums.BlackBoxEnum;
 import com.mastermind.mastermind.enums.ColorEnum;
 import com.mastermind.mastermind.enums.GameVariantEnum;
 import com.mastermind.mastermind.service.db.DBhandler;
@@ -241,8 +242,8 @@ public class MainGameActivity extends AppCompatActivity {
 
 
         if(attemptsButtonCount.equals(count)) {
-            boolean complete = checkCompleteAttempt();
             List<Integer> colorsId = new ArrayList<Integer>();
+
             Integer colorId;
             Button currentButton;
             ColorDrawable buttonColor;
@@ -273,7 +274,12 @@ public class MainGameActivity extends AppCompatActivity {
                 buttonColor = (ColorDrawable) currentButton.getBackground();
                 colorId = buttonColor.getColor();
                 colorsId.add(colorId);
+
             }
+
+            List<BlackBoxEnum> blackBox = mainGame.checkAnswer(colorsId,colorsRand);
+            Log.i("colors" , blackBox.toString());
+
         } else {
 
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -294,16 +300,13 @@ public class MainGameActivity extends AppCompatActivity {
 
 
 
-        Log.i(colorsRand.toString(), "sendButtonClick: rand colors");
+        Log.i("colors",colorsRand.toString());
 
 
     }
 
 
-
-
-
-
+// czy potrzebna?
     boolean checkCompleteAttempt(){
 
         boolean allColors=true;
