@@ -60,7 +60,7 @@ public class MainGameActivity extends AppCompatActivity {
 
     private List<ColorEnum> colorsRand;
 
-    private MainGame mainGame = new MainGame();
+    private MainGame mainGame = new MainGame(this);
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -306,6 +306,11 @@ public class MainGameActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
+
 
     private void showBlackBox(List<BlackBoxEnum> blackBox) {
 

@@ -1,26 +1,49 @@
 package com.mastermind.mastermind.bean.game;
 
+import android.content.Context;
 import android.util.Log;
 
+import com.mastermind.mastermind.activities.game.MainGameActivity;
+import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.enums.BlackBoxEnum;
 import com.mastermind.mastermind.enums.ColorEnum;
+import com.mastermind.mastermind.enums.GameVariantEnum;
+import com.mastermind.mastermind.enums.SolutionEnum;
+import com.mastermind.mastermind.service.db.DBhandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class MainGame {
 
     private Integer attemptCount = 0;
 
+    private DBhandler db ;
+
+    private Context context;
+
     private ReverseColorMap reverseMap = new ReverseColorMap();
 
-    private boolean checkAttempt(List<Integer> colorsId,List<ColorEnum> randColors){
+
+
+    public MainGame(Context context) {
+
+        this.context=context;
+        this.db= new DBhandler(context);
+
+    }
+
+    private boolean checkAttempt(List<Integer> colorsId, List<ColorEnum> randColors){
 
         boolean result = true;
         Map<Integer,ColorEnum> colorsMap =reverseMap.getColorsMap();
+
 
 
         for(int i=0;i<colorsId.size();i++) {
@@ -39,14 +62,21 @@ public class MainGame {
     public List<BlackBoxEnum> checkAnswer(List<Integer> colorsId,List<ColorEnum> randColors){
 
         List<BlackBoxEnum> blackBox = new ArrayList<BlackBoxEnum>() ;
+        GameVariantEnum variant;
+
+        if(randColors.size()==4){  variant=GameVariantEnum.CLASSIC; }
+        else {variant = GameVariantEnum.SUPER;}
 
           if(!checkAttempt(colorsId,randColors))
         {
             blackBox = buildBlackBox(colorsId,randColors);
         }
         else
+
           {
-              Log.i(attemptCount.toString(), "checkAnswer: attempts count");
+                Date date = new Date();
+                String dateS = date.toString();
+                db.addStat(new StatisticGame(dateS,variant,attemptCount, SolutionEnum.USER));
           }
 
         return blackBox;
