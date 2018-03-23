@@ -194,4 +194,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/attemptLayout"
         app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/blackBoxBut1"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="48dp"
+        android:background="@color/colorAccent"
+        android:text=""
+        app:layout_constraintEnd_toStartOf="@+id/blackBoxBut2"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/blackBoxBut2"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginTop="48dp"
+        android:text=""
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toStartOf="@+id/blackBoxBut3"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/blackBoxBut3"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="48dp"
+        android:text=""
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toStartOf="@+id/blackBoxBut4"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/blackBoxBut4"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="48dp"
+        android:text=""
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
 </android.support.constraint.ConstraintLayout>

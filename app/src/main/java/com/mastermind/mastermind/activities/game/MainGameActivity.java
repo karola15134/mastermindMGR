@@ -278,7 +278,9 @@ public class MainGameActivity extends AppCompatActivity {
             }
 
             List<BlackBoxEnum> blackBox = mainGame.checkAnswer(colorsId,colorsRand);
-            Log.i("colors" , blackBox.toString());
+            resetAttemptColors();
+            showBlackBox(blackBox);
+
 
         } else {
 
@@ -305,33 +307,82 @@ public class MainGameActivity extends AppCompatActivity {
 
     }
 
+    private void showBlackBox(List<BlackBoxEnum> blackBox) {
 
-// czy potrzebna?
-    boolean checkCompleteAttempt(){
+        resetBlackBox();
+        int size = blackBox.size();
 
-        boolean allColors=true;
+        List<Button> buttonList = new ArrayList<Button>();
 
-        if(findViewById(R.id.attemptColorBut).getTag().equals("false")) { allColors= false; }
-        if(findViewById(R.id.attemptColorBut2).getTag().equals("false")) { allColors= false; }
-        if(findViewById(R.id.attemptColorBut3).getTag().equals("false")) { allColors= false; }
-        if(findViewById(R.id.attemptColorBut4).getTag().equals("false")) { allColors= false; }
+        Button but;
 
-        if(variantGame.equals(GameVariantEnum.SUPER)) {
+        but = findViewById(R.id.blackBoxBut1);
+        buttonList.add(but);
 
-            if(findViewById(R.id.attemptColorBut5).getTag().equals("false")) { allColors= false; }
+        but = findViewById(R.id.blackBoxBut2);
+        buttonList.add(but);
 
+        but = findViewById(R.id.blackBoxBut3);
+        buttonList.add(but);
+
+        but = findViewById(R.id.blackBoxBut4);
+        buttonList.add(but);
+
+
+        for(int i=0;i<size;i++)
+        {
+            if(blackBox.get(i).equals(BlackBoxEnum.BLACK)) {
+                buttonList.get(i).setBackgroundColor(Color.BLACK);
+            }else
+            {
+                buttonList.get(i).setBackgroundColor(Color.WHITE);
+            }
         }
-
-        return allColors;
 
     }
 
+
+
+
+
     public void resetButtonClick(View view) {
+
+        resetAttemptColors();
+    }
+
+    private void resetBlackBox() {
+
+        List<Button> buttonList = new ArrayList<Button>();
+
+        Button but;
+
+        but = findViewById(R.id.blackBoxBut1);
+        buttonList.add(but);
+
+        but = findViewById(R.id.blackBoxBut2);
+        buttonList.add(but);
+
+        but = findViewById(R.id.blackBoxBut3);
+        buttonList.add(but);
+
+        but = findViewById(R.id.blackBoxBut4);
+        buttonList.add(but);
+
+        for(Button button : buttonList)
+        {
+            button.setBackgroundColor(Color.parseColor("#FFF3EAEA"));
+        }
+
+
+
+    }
+
+    private void resetAttemptColors(){
 
         Button button;
         Integer color = Color.parseColor("#EEEEEE");
 
-         button = (Button) findViewById(R.id.attemptColorBut);
+        button = (Button) findViewById(R.id.attemptColorBut);
         button.setBackgroundColor(color);
         button.setTag("false");
 
@@ -358,7 +409,10 @@ public class MainGameActivity extends AppCompatActivity {
 
         attemptsButtonCount=0;
 
+        resetBlackBox();
     }
+
+
 }
 
 

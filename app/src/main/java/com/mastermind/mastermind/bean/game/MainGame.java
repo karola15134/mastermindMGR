@@ -44,6 +44,10 @@ public class MainGame {
         {
             blackBox = buildBlackBox(colorsId,randColors);
         }
+        else
+          {
+              Log.i(attemptCount.toString(), "checkAnswer: attempts count");
+          }
 
         return blackBox;
     }
@@ -82,7 +86,6 @@ public class MainGame {
                    if(array[j]==false) {
                        blackBox.add(BlackBoxEnum.WHITE);
                        array[j] = true;
-                       Log.i("build box", "wejscie w petle");
                    }
                }
             }
