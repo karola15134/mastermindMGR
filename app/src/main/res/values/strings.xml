@@ -97,5 +97,6 @@
     <string name="title_activity_game_variant">Wariant gry</string>
     <string name="title_activity_main_game">Gra </string>
     <string name="pr_by">Próby</string>
+    <string name="title_activity_end_game">Koniec gry</string>
 
 </resources>

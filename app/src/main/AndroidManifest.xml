@@ -30,8 +30,11 @@
         <activity
             android:name=".activities.game.MainGameActivity"
             android:label="@string/title_activity_main_game"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.game.EndGameActivity"
+            android:label="@string/title_activity_end_game"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
     </application>
 
 </manifest>

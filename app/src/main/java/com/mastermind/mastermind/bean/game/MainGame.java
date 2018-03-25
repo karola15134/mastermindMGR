@@ -77,6 +77,7 @@ public class MainGame {
                 Date date = new Date();
                 String dateS = date.toString();
                 db.addStat(new StatisticGame(dateS,variant,attemptCount, SolutionEnum.USER));
+                blackBox = null;
           }
 
         return blackBox;

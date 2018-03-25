@@ -278,8 +278,19 @@ public class MainGameActivity extends AppCompatActivity {
             }
 
             List<BlackBoxEnum> blackBox = mainGame.checkAnswer(colorsId,colorsRand);
-            resetAttemptColors();
-            showBlackBox(blackBox);
+            if(blackBox==null)
+            {
+
+                showSuccessMessage();
+
+
+
+            }else{
+                resetAttemptColors();
+                showBlackBox(blackBox);
+
+
+            }
 
 
         } else {
@@ -307,9 +318,33 @@ public class MainGameActivity extends AppCompatActivity {
 
     }
 
+    private void showSuccessMessage() {
 
 
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Gratulacje!\n Kod został odgadnięty poprawnie ");
 
+        alertDialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+                Intent intent = new Intent(MainGameActivity.this,EndGameActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("solution","Gracz");
+                bundle.putString("variant",variantGame.toString());
+                bundle.putString("attemptCount",mainGame.getAttemptCount().toString());
+
+                intent.putExtras(bundle);
+                startActivity(intent);
+
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+
+    }
 
 
     private void showBlackBox(List<BlackBoxEnum> blackBox) {
