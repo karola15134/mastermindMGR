@@ -34,7 +34,8 @@
         <activity
             android:name=".activities.game.EndGameActivity"
             android:label="@string/title_activity_end_game"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.game.AttemptActivity"></activity>
     </application>
 
 </manifest>

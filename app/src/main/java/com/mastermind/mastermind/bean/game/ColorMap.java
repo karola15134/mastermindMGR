@@ -45,4 +45,9 @@ public class ColorMap {
     public Map<ColorEnum, Integer> getColorsMap() {
         return colorsMap;
     }
+
+    public Integer getColor(ColorEnum color){
+
+        return  colorsMap.get(color);
+    }
 }

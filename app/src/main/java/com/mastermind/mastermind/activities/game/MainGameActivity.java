@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -28,21 +29,24 @@ import android.widget.Toast;
 
 import com.mastermind.mastermind.R;
 import com.mastermind.mastermind.activities.statistic.StatisticGameActivity;
+import com.mastermind.mastermind.adapter.AttemptListViewAdapter;
 import com.mastermind.mastermind.adapter.StatisticListViewAdapter;
 import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.bean.game.ColorList;
 import com.mastermind.mastermind.bean.game.ColorMap;
 import com.mastermind.mastermind.bean.game.MainGame;
+import com.mastermind.mastermind.bean.layout.Attempt;
 import com.mastermind.mastermind.enums.BlackBoxEnum;
 import com.mastermind.mastermind.enums.ColorEnum;
 import com.mastermind.mastermind.enums.GameVariantEnum;
 import com.mastermind.mastermind.service.db.DBhandler;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MainGameActivity extends AppCompatActivity {
+public class MainGameActivity extends AppCompatActivity   {
 
     private PopupWindow mPopupWindow;
 
@@ -62,6 +66,10 @@ public class MainGameActivity extends AppCompatActivity {
 
     private MainGame mainGame = new MainGame(this);
 
+    private List<Attempt> attemptList = new ArrayList<Attempt>();
+
+    private ListView menu ;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,49 +78,6 @@ public class MainGameActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mContext = getApplicationContext();
-        mActivity = MainGameActivity.this;
-        mConstraintLayout = (ConstraintLayout) findViewById(R.id.main_layout);
-        mButton = (Button) findViewById(R.id.attemptButton);
-
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
-
-
-                View customView = inflater.inflate(R.layout.pop_window,null);
-
-                mPopupWindow = new PopupWindow(
-                        customView,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT
-                );
-
-                mPopupWindow.setAnimationStyle(android.R.anim.fade_in);
-                mPopupWindow.setHeight(750);
-
-                if(Build.VERSION.SDK_INT>=21){
-                    mPopupWindow.setElevation(5.0f);
-                }
-
-
-                ImageButton closeButton = (ImageButton) customView.findViewById(R.id.ib_close);
-
-
-                closeButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        mPopupWindow.dismiss();
-                    }
-                });
-
-
-                mPopupWindow.showAtLocation(mConstraintLayout, Gravity.CENTER,0,0);
-            }
-        });
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -234,6 +199,7 @@ public class MainGameActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void sendButtonClick(View view) {
 
         int count;
@@ -277,6 +243,8 @@ public class MainGameActivity extends AppCompatActivity {
 
             }
 
+
+
             List<BlackBoxEnum> blackBox = mainGame.checkAnswer(colorsId,colorsRand);
             if(blackBox==null)
             {
@@ -288,6 +256,9 @@ public class MainGameActivity extends AppCompatActivity {
             }else{
                 resetAttemptColors();
                 showBlackBox(blackBox);
+
+                Attempt attempt = converseToAttempt(colorsId);
+                attemptList.add(attempt);
 
 
             }
@@ -316,6 +287,24 @@ public class MainGameActivity extends AppCompatActivity {
         Log.i("colors",colorsRand.toString());
 
 
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private Attempt converseToAttempt(List<Integer> colorsId) {
+
+        Attempt attempt = new Attempt();
+        attempt.setColor1(colorsId.get(0));
+        attempt.setColor2(colorsId.get(1));
+        attempt.setColor3(colorsId.get(2));
+        attempt.setColor4(colorsId.get(3));
+
+        Log.i(attempt.getColor1().toString(), "converseToAttempt: ");
+        if(variantGame.equals(GameVariantEnum.SUPER)){
+
+            attempt.setColor5(colorsId.get(4));
+        }
+
+        return attempt;
     }
 
     private void showSuccessMessage() {
@@ -453,6 +442,16 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
 
+    public void attemptClick(View view) {
+
+        Intent intent = new Intent(this,AttemptActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("list",(Serializable) attemptList);
+        bundle.putString("variant",variantGame.toString());
+        intent.putExtras(bundle);
+        startActivity(intent);
+
+    }
 }
 
 
