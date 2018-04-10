@@ -5,17 +5,21 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.mastermind.mastermind.R;
+import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.bean.game.genetic.Genotype;
 import com.mastermind.mastermind.bean.game.genetic.Population;
 import com.mastermind.mastermind.bean.game.user.ColorList;
 import com.mastermind.mastermind.enums.BlackBoxEnum;
 import com.mastermind.mastermind.enums.ColorEnum;
 import com.mastermind.mastermind.enums.GameVariantEnum;
+import com.mastermind.mastermind.enums.SolutionEnum;
+import com.mastermind.mastermind.service.db.DBhandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class GeneticActivity extends AppCompatActivity {
@@ -38,9 +42,9 @@ public class GeneticActivity extends AppCompatActivity {
 
     private final static double MUTATE_PROB = 4;
 
-    private final static  double CROSS_PROB = 0.6;
+    private final static  double CROSS_PROB = 0.4;
 
-
+    final DBhandler db = new DBhandler(this);
 
     private Integer chromomoseSize ;
 
@@ -79,7 +83,7 @@ public class GeneticActivity extends AppCompatActivity {
 
         do{
 
-            generationCount++;
+
             Log.i("GEN COUNT", generationCount.toString());
             population.newPopulation(prevAttempt,prevBlack,prevWhite);
 
@@ -96,8 +100,11 @@ public class GeneticActivity extends AppCompatActivity {
             prevWhite.add(white);
             prevAttempt.add(new Genotype(attempt));
 
+            generationCount++;
 
         }while(black!= chromomoseSize && generationCount<GENERATION_SIZE);
+
+
 
 
         Log.i("RANDOM COLORS",randColors.toString());
@@ -108,12 +115,25 @@ public class GeneticActivity extends AppCompatActivity {
         }
 
 
+        if(generationCount < GENERATION_SIZE)
+        addToStatistic(prevAttempt.size());
 
 
 
 
 
 
+
+
+
+
+    }
+
+    private void addToStatistic(int attemptsSize) {
+
+        String date = new Date().toString();
+        StatisticGame stat = new StatisticGame(date,variantGame,attemptsSize, SolutionEnum.GENETIC_ALG);
+        db.addStat(stat);
 
     }
 
