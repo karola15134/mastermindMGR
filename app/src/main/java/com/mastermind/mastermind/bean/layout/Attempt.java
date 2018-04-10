@@ -4,11 +4,7 @@ package com.mastermind.mastermind.bean.layout;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
-import com.mastermind.mastermind.bean.game.ColorMap;
-import com.mastermind.mastermind.enums.ColorEnum;
-
 import java.io.Serializable;
-import java.util.List;
 
 public class Attempt implements Serializable {
 

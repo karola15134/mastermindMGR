@@ -1,4 +1,4 @@
-package com.mastermind.mastermind.bean.game;
+package com.mastermind.mastermind.bean.game.user;
 
 
 import android.graphics.Color;

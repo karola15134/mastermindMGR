@@ -1,4 +1,4 @@
-package com.mastermind.mastermind.activities.game;
+package com.mastermind.mastermind.activities.game.user;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -15,31 +14,20 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.mastermind.mastermind.R;
-import com.mastermind.mastermind.activities.statistic.StatisticGameActivity;
-import com.mastermind.mastermind.adapter.AttemptListViewAdapter;
-import com.mastermind.mastermind.adapter.StatisticListViewAdapter;
-import com.mastermind.mastermind.bean.db.StatisticGame;
-import com.mastermind.mastermind.bean.game.ColorList;
-import com.mastermind.mastermind.bean.game.ColorMap;
-import com.mastermind.mastermind.bean.game.MainGame;
+import com.mastermind.mastermind.bean.game.user.ColorList;
+import com.mastermind.mastermind.bean.game.user.ColorMap;
+import com.mastermind.mastermind.bean.game.user.MainGame;
 import com.mastermind.mastermind.bean.layout.Attempt;
 import com.mastermind.mastermind.enums.BlackBoxEnum;
 import com.mastermind.mastermind.enums.ColorEnum;
 import com.mastermind.mastermind.enums.GameVariantEnum;
-import com.mastermind.mastermind.service.db.DBhandler;
 
 import java.io.Serializable;
 import java.util.ArrayList;

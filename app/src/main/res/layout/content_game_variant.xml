@@ -12,20 +12,53 @@
         android:id="@+id/classicButton"
         android:layout_width="355dp"
         android:layout_height="65dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="220dp"
+        android:onClick="onButtonClick"
         android:text="6 kolorów"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        android:onClick="onButtonClick"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/superButton"
         android:layout_width="355dp"
         android:layout_height="65dp"
+        android:layout_marginTop="12dp"
+        android:onClick="onButtonClick"
         android:text="8 kolorów"
         app:layout_constraintTop_toBottomOf="@+id/classicButton"
         tools:ignore="MissingConstraints"
-        android:onClick="onButtonClick"
         tools:layout_editor_absoluteX="0dp" />
+
+    <RadioButton
+        android:id="@+id/userRadio"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:buttonTint="@color/colorPrimaryDark"
+        android:onClick="onCheckboxClicked"
+        android:text="Gracz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248" />
+
+    <RadioButton
+        android:id="@+id/algRadio"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:buttonTint="@color/colorPrimaryDark"
+        android:onClick="onCheckboxClicked"
+        android:text="Algorytm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.248" />
 </android.support.constraint.ConstraintLayout>

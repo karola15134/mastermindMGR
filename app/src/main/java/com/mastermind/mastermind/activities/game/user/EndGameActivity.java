@@ -1,4 +1,4 @@
-package com.mastermind.mastermind.activities.game;
+package com.mastermind.mastermind.activities.game.user;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -6,26 +6,14 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mastermind.mastermind.R;
-import com.mastermind.mastermind.activities.statistic.StatisticGameActivity;
-import com.mastermind.mastermind.adapter.StatisticListViewAdapter;
-import com.mastermind.mastermind.bean.db.StatisticGame;
+import com.mastermind.mastermind.activities.game.GameVariantActivity;
 import com.mastermind.mastermind.enums.GameVariantEnum;
-import com.mastermind.mastermind.service.db.DBhandler;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 public class EndGameActivity extends AppCompatActivity {
 

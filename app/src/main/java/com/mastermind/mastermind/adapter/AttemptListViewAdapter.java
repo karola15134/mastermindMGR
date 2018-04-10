@@ -2,9 +2,7 @@ package com.mastermind.mastermind.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
 import android.os.Build;
-import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,13 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.mastermind.mastermind.R;
-import com.mastermind.mastermind.bean.game.ColorMap;
+import com.mastermind.mastermind.bean.game.user.ColorMap;
 import com.mastermind.mastermind.bean.layout.Attempt;
-import com.mastermind.mastermind.bean.layout.Item;
-import com.mastermind.mastermind.enums.ColorEnum;
 import com.mastermind.mastermind.enums.GameVariantEnum;
 
 import java.util.List;

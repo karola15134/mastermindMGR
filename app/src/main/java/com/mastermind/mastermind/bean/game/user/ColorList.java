@@ -1,10 +1,13 @@
-package com.mastermind.mastermind.bean.game;
+package com.mastermind.mastermind.bean.game.user;
 
+
+import android.util.Log;
 
 import com.mastermind.mastermind.enums.ColorEnum;
 import com.mastermind.mastermind.enums.GameVariantEnum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +21,8 @@ public class ColorList {
 
     private List<ColorEnum> colorsRand = new ArrayList<ColorEnum>();
 
+    private GameVariantEnum gameVariant;
+
 
     public ColorList(GameVariantEnum gameVariant) {
 
@@ -30,11 +35,11 @@ public class ColorList {
         colors.add(ColorEnum.ORANGE);
         colors.add(ColorEnum.DARK_BLUE);
 
-        final String variant = gameVariant.toString();
+       this.gameVariant = gameVariant;
 
         Random gen = new Random();
 
-        switch(variant) {
+        switch(gameVariant.toString()) {
 
             case "CLASSIC":
 
@@ -57,8 +62,31 @@ public class ColorList {
                 }
                 break;
         }
+
+
     }
 
+    public ColorEnum getColor (){
+
+        Random gen = new Random();
+
+
+        ColorEnum color = ColorEnum.BLUE ;
+
+        switch(gameVariant.toString()) {
+
+            case "CLASSIC":
+
+               color = colors.get(gen.nextInt(5));
+
+            case "SUPER":
+
+                color = colors.get(gen.nextInt(7));
+        }
+
+        return color;
+
+    }
 
     public List<ColorEnum> getColorsRand() {
         return colorsRand;
@@ -67,4 +95,6 @@ public class ColorList {
     public List<ColorEnum> getColors() {
         return colors;
     }
+
+
 }

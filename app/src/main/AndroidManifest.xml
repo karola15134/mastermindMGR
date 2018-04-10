@@ -28,14 +28,15 @@
             android:label="@string/title_activity_game_variant"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.game.MainGameActivity"
+            android:name=".activities.game.user.MainGameActivity"
             android:label="@string/title_activity_main_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.game.EndGameActivity"
+            android:name=".activities.game.user.EndGameActivity"
             android:label="@string/title_activity_end_game"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.game.AttemptActivity"></activity>
+        <activity android:name=".activities.game.user.AttemptActivity" />
+        <activity android:name=".activities.game.genetic.GeneticActivity"></activity>
     </application>
 
 </manifest>

@@ -1,9 +1,7 @@
-package com.mastermind.mastermind.bean.game;
+package com.mastermind.mastermind.bean.game.user;
 
 import android.content.Context;
-import android.util.Log;
 
-import com.mastermind.mastermind.activities.game.MainGameActivity;
 import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.enums.BlackBoxEnum;
 import com.mastermind.mastermind.enums.ColorEnum;
@@ -14,11 +12,8 @@ import com.mastermind.mastermind.service.db.DBhandler;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class MainGame {
 
