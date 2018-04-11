@@ -1,10 +1,24 @@
 package com.mastermind.mastermind.activities.game.genetic;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.mastermind.mastermind.R;
+import com.mastermind.mastermind.activities.game.GameVariantActivity;
+import com.mastermind.mastermind.activities.game.user.EndGameActivity;
+import com.mastermind.mastermind.activities.game.user.MainGameActivity;
 import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.bean.game.genetic.Genotype;
 import com.mastermind.mastermind.bean.game.genetic.Population;
@@ -52,80 +66,28 @@ public class GeneticActivity extends AppCompatActivity {
 
     private Integer white;
 
+    private ProgressBar spinner;
+
+    private TextView text;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_genetic);
 
+        spinner=(ProgressBar)findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
+        spinner.getIndeterminateDrawable().setColorFilter(0xFFFF0000, android.graphics.PorterDuff.Mode.MULTIPLY);
+
+        text = (TextView)findViewById(R.id.textView3) ;
+        text.setVisibility(View.GONE);
+
+
         Bundle extras = getIntent().getExtras();
         variantGame = (GameVariantEnum) extras.get("gameVariant");
-
-        colorList= new ColorList(variantGame);
-
-        randColors = colorList.getColorsRand();
-
-        List<Integer> currentAttepmt = new ArrayList<Integer>();
-
-        Population population = new Population(variantGame,POPULATION_SIZE,MUTATE_PROB,CROSS_PROB);
-        population.initPopulation(prevAttempt,prevBlack,prevWhite);
-
-
-        if(variantGame.equals(GameVariantEnum.CLASSIC)){
-            chromomoseSize = 4;
-        }else
-        chromomoseSize = 5;
-
-        List<ColorEnum> attempt;
-
-        Integer generationCount = 0;
-
-
-        do{
-
-
-            Log.i("GEN COUNT", generationCount.toString());
-            population.newPopulation(prevAttempt,prevBlack,prevWhite);
-
-            population.statistic();
-            Genotype bestMember = population.getBestMember();
-            attempt = new ArrayList<ColorEnum>();
-            copyBestMember(attempt,bestMember);
-
-             List<BlackBoxEnum> blackBox = checkAttempt(attempt,randColors);
-             black = getColorValue(blackBox,BlackBoxEnum.BLACK);
-             white = getColorValue(blackBox,BlackBoxEnum.WHITE);
-
-            prevBlack.add(black);
-            prevWhite.add(white);
-            prevAttempt.add(new Genotype(attempt));
-
-            generationCount++;
-
-        }while(black!= chromomoseSize && generationCount<GENERATION_SIZE);
-
-
-
-
-        Log.i("RANDOM COLORS",randColors.toString());
-
-        for(Genotype member: prevAttempt)
-        {
-            Log.i("ATTEMPTS",member.getChromosome().toString());
-        }
-
-
-        if(generationCount < GENERATION_SIZE)
-        addToStatistic(prevAttempt.size());
-
-
-
-
-
-
-
-
-
 
     }
 
@@ -204,5 +166,158 @@ public class GeneticActivity extends AppCompatActivity {
 
         return colorCount;
 
+    }
+
+
+    public void newGameButClick(View view) {
+
+
+        startActivity(new Intent(this,GameVariantActivity.class));
+
+
+    }
+
+    public void endbutClick(View view) {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Wyjdź z gry");
+
+        alertDialogBuilder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(DialogInterface arg0, int arg1) {
+
+                finishAffinity();
+            }
+        });
+
+        alertDialogBuilder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+    }
+
+
+    public void geneticGameButClick(View view) {
+
+
+        new AsyncTask<Void, Void, Void>() {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+                spinner.setVisibility(View.VISIBLE);
+                text.setVisibility(View.VISIBLE);
+
+            }
+
+            @Override
+            protected void onPostExecute(Void aVoid) {
+                super.onPostExecute(aVoid);
+
+                spinner.setVisibility(View.GONE);
+                text.setVisibility(View.GONE);
+
+
+
+
+            }
+
+            @Override
+            protected Void doInBackground(Void... params) {
+             geneticAlgorithm();
+                return null;
+            }
+        }.execute();
+
+
+
+
+    }
+
+
+
+    private void geneticAlgorithm() {
+
+
+
+        colorList= new ColorList(variantGame);
+
+        randColors = colorList.getColorsRand();
+
+        List<Integer> currentAttepmt = new ArrayList<Integer>();
+
+        Population population = new Population(variantGame,POPULATION_SIZE,MUTATE_PROB,CROSS_PROB);
+        population.initPopulation(prevAttempt,prevBlack,prevWhite);
+
+
+        if(variantGame.equals(GameVariantEnum.CLASSIC)){
+            chromomoseSize = 4;
+        }else
+            chromomoseSize = 5;
+
+        List<ColorEnum> attempt;
+
+        Integer generationCount = 0;
+
+
+        do{
+
+
+            Log.i("GEN COUNT", generationCount.toString());
+            population.newPopulation(prevAttempt,prevBlack,prevWhite);
+
+            population.statistic();
+            Genotype bestMember = population.getBestMember();
+            attempt = new ArrayList<ColorEnum>();
+            copyBestMember(attempt,bestMember);
+
+            List<BlackBoxEnum> blackBox = checkAttempt(attempt,randColors);
+            black = getColorValue(blackBox,BlackBoxEnum.BLACK);
+            white = getColorValue(blackBox,BlackBoxEnum.WHITE);
+
+            prevBlack.add(black);
+            prevWhite.add(white);
+            prevAttempt.add(new Genotype(attempt));
+
+            generationCount++;
+
+        }while(black!= chromomoseSize && generationCount<GENERATION_SIZE);
+
+
+
+
+        Log.i("RANDOM COLORS",randColors.toString());
+
+        for(Genotype member: prevAttempt)
+        {
+            Log.i("ATTEMPTS",member.getChromosome().toString());
+        }
+
+        if(generationCount < GENERATION_SIZE - 1)
+            addToStatistic(prevAttempt.size());
+
+
+        endGame(prevAttempt.size());
+
+
+    }
+
+    private void endGame(int size) {
+
+        Intent intent = new Intent(GeneticActivity.this,EndGameActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("solution","Algorytm");
+        bundle.putString("variant",variantGame.toString());
+        bundle.putString("attemptCount",Integer.toString(size));
+
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

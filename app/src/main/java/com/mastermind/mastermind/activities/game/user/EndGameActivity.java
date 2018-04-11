@@ -34,9 +34,9 @@ public class EndGameActivity extends AppCompatActivity {
         TextView variant = (TextView) findViewById(R.id.variantTxtView);
         String variantGameS ="";
         if(GameVariantEnum.CLASSIC.equals(GameVariantEnum.valueOf(variantGame))){
-            variantGameS = "Klasyczna - 6 kolorów ";
+            variantGameS = "Klasyczny - 4 kolory ";
         }else{
-            variantGameS = "Super - 8 kolorów";
+            variantGameS = "Super - 5 kolorów";
         }
         variant.setText(variantGameS);
 

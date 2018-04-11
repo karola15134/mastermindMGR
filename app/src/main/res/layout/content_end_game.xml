@@ -38,10 +38,7 @@
 
         </TableRow>
 
-        <TableRow
-
-
-            >
+        <TableRow>
 
             <TextView
                 android:id="@+id/textView7"

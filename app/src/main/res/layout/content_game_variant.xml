@@ -10,22 +10,24 @@
 
     <Button
         android:id="@+id/classicButton"
+        style="@android:style/Widget.Material.Light.Button.Toggle"
         android:layout_width="355dp"
         android:layout_height="65dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="248dp"
         android:onClick="onButtonClick"
-        android:text="6 kolorów"
+        android:text="Klasyczny - 4 kolory"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/superButton"
+        style="@android:style/Widget.Material.Light.Button.Toggle"
         android:layout_width="355dp"
         android:layout_height="65dp"
         android:layout_marginTop="12dp"
         android:onClick="onButtonClick"
-        android:text="8 kolorów"
+        android:text="Super - 5 kolorów"
         app:layout_constraintTop_toBottomOf="@+id/classicButton"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp" />
@@ -61,4 +63,38 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.248" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Warianty gry"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.418" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Typy rozwiązania"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.159" />
 </android.support.constraint.ConstraintLayout>
