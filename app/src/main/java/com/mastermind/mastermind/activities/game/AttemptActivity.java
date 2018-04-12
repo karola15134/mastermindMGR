@@ -1,4 +1,4 @@
-package com.mastermind.mastermind.activities.game.user;
+package com.mastermind.mastermind.activities.game;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.mastermind.mastermind.activities.game.user.EndGameActivity"
+    tools:context="com.mastermind.mastermind.activities.game.EndGameActivity"
     tools:showIn="@layout/activity_end_game">
 
     <TableLayout
@@ -108,7 +108,17 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
+            android:id="@+id/detailsBut"
+            style="@android:style/Widget.Material.Light.Button.Toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="detailsButOnClick"
+            android:text="Szczegóły" />
+
+        <Button
             android:id="@+id/newGameBut"
+            style="@android:style/Widget.Material.Light.Button.Toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -117,6 +127,7 @@
 
         <Button
             android:id="@+id/endBut"
+            style="@android:style/Widget.Material.Light.Button.Toggle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

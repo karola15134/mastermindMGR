@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mastermind.mastermind.activities.game.user.AttemptActivity">
+    tools:context="com.mastermind.mastermind.activities.game.AttemptActivity">
 
     <ListView
         android:id="@+id/listViewAttempt"

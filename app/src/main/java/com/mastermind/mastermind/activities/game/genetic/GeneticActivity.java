@@ -10,15 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.mastermind.mastermind.R;
 import com.mastermind.mastermind.activities.game.GameVariantActivity;
-import com.mastermind.mastermind.activities.game.user.EndGameActivity;
-import com.mastermind.mastermind.activities.game.user.MainGameActivity;
+import com.mastermind.mastermind.activities.game.EndGameActivity;
 import com.mastermind.mastermind.bean.db.StatisticGame;
 import com.mastermind.mastermind.bean.game.genetic.Genotype;
 import com.mastermind.mastermind.bean.game.genetic.Population;
@@ -29,10 +26,9 @@ import com.mastermind.mastermind.enums.GameVariantEnum;
 import com.mastermind.mastermind.enums.SolutionEnum;
 import com.mastermind.mastermind.service.db.DBhandler;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -304,19 +300,19 @@ public class GeneticActivity extends AppCompatActivity {
             addToStatistic(prevAttempt.size());
 
 
-        endGame(prevAttempt.size());
+        endGame(prevAttempt);
 
 
     }
 
-    private void endGame(int size) {
+    private void endGame(List<Genotype> attemptsList) {
 
         Intent intent = new Intent(GeneticActivity.this,EndGameActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("solution","Algorytm");
         bundle.putString("variant",variantGame.toString());
-        bundle.putString("attemptCount",Integer.toString(size));
-
+        bundle.putString("attemptCount",Integer.toString(attemptsList.size()));
+        bundle.putSerializable("list",(Serializable) attemptsList);
         intent.putExtras(bundle);
         startActivity(intent);
     }

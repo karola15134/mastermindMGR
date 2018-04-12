@@ -7,13 +7,14 @@ import com.mastermind.mastermind.bean.game.user.ReverseColorMap;
 import com.mastermind.mastermind.enums.BlackBoxEnum;
 import com.mastermind.mastermind.enums.ColorEnum;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class Genotype {
+public class Genotype implements Serializable{
 
     private List<ColorEnum> chromosome; //4 lub 5 genów ( rozwiazanie ) do koloru przypisana liczba
 

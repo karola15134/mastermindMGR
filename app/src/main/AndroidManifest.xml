@@ -32,10 +32,10 @@
             android:label="@string/title_activity_main_game"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activities.game.user.EndGameActivity"
+            android:name=".activities.game.EndGameActivity"
             android:label="@string/title_activity_end_game"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.game.user.AttemptActivity" />
+        <activity android:name=".activities.game.AttemptActivity" android:label="@string/proby" />
         <activity android:name=".activities.game.genetic.GeneticActivity" android:label="@string/title_activity_genetic">      </activity>
     </application>
 

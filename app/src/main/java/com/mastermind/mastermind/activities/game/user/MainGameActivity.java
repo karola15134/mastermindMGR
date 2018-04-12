@@ -21,6 +21,8 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import com.mastermind.mastermind.R;
+import com.mastermind.mastermind.activities.game.AttemptActivity;
+import com.mastermind.mastermind.activities.game.EndGameActivity;
 import com.mastermind.mastermind.bean.game.user.ColorList;
 import com.mastermind.mastermind.bean.game.user.ColorMap;
 import com.mastermind.mastermind.bean.game.user.MainGame;
@@ -237,6 +239,8 @@ public class MainGameActivity extends AppCompatActivity   {
             if(blackBox==null)
             {
 
+                Attempt attempt = converseToAttempt(colorsId);
+                attemptList.add(attempt);
                 showSuccessMessage();
 
 
@@ -310,7 +314,7 @@ public class MainGameActivity extends AppCompatActivity   {
                 bundle.putString("solution","Gracz");
                 bundle.putString("variant",variantGame.toString());
                 bundle.putString("attemptCount",mainGame.getAttemptCount().toString());
-
+                bundle.putSerializable("list",(Serializable)attemptList);
                 intent.putExtras(bundle);
                 startActivity(intent);
 
