@@ -16,11 +16,9 @@ import java.util.Map;
 
 public class Genotype implements Serializable{
 
-    private List<ColorEnum> chromosome; //4 lub 5 genów ( rozwiazanie ) do koloru przypisana liczba
+    private List<ColorEnum> chromosome;
 
-
-    private double fittness;   //wartosc funkcji przystosowania
-
+    private double fitness;
 
     public Genotype(List<ColorEnum> chromosome) {
         this.chromosome = chromosome;
@@ -35,16 +33,12 @@ public class Genotype implements Serializable{
     }
 
     public double getFittness() {
-        return fittness;
+        return fitness;
     }
 
     public void setFittness(double fittness) {
-        this.fittness = fittness;
+        this.fitness = fittness;
     }
-
-
-
-
 
 
     private List<BlackBoxEnum>  returnBlackBox(List<ColorEnum> colorsId, List<ColorEnum> randColors)
@@ -129,7 +123,7 @@ public class Genotype implements Serializable{
         }
 
         Log.i("DISTANCE", Integer.toString(distance));
-        this.fittness = distance;
+        this.fitness = distance;
 
 
     }

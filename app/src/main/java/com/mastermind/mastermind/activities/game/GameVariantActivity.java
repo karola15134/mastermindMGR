@@ -3,9 +3,12 @@ package com.mastermind.mastermind.activities.game;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -13,18 +16,15 @@ import android.widget.RadioButton;
 import com.mastermind.mastermind.R;
 import com.mastermind.mastermind.activities.game.genetic.GeneticActivity;
 import com.mastermind.mastermind.activities.game.user.MainGameActivity;
-import com.mastermind.mastermind.bean.game.genetic.Genotype;
-import com.mastermind.mastermind.bean.game.genetic.Population;
-import com.mastermind.mastermind.bean.game.user.ColorList;
-import com.mastermind.mastermind.enums.ColorEnum;
 import com.mastermind.mastermind.enums.GameVariantEnum;
 
-import java.util.List;
+
 
 public class GameVariantActivity extends AppCompatActivity {
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,9 @@ public class GameVariantActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
+
 
 
 

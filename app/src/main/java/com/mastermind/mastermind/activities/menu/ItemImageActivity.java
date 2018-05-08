@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.mastermind.mastermind.R;
 import com.mastermind.mastermind.activities.game.GameVariantActivity;
+import com.mastermind.mastermind.activities.game.TestActivity;
 import com.mastermind.mastermind.activities.statistic.StatisticGameActivity;
 import com.mastermind.mastermind.adapter.CustomListViewAdapter;
 import com.mastermind.mastermind.bean.layout.Item;
@@ -24,10 +25,10 @@ public class ItemImageActivity extends Activity implements
         OnItemClickListener {
 
     public static final String[] titles = new String[] { "Graj",
-            "Ustawienia", "Statystyki", "Wyjście" };
+            "Testy", "Statystyki", "Wyjście" };
 
     public static final Integer[] images = { R.drawable.grajxxx,
-            R.drawable.ustawieniaxxx, R.drawable.statystykixxx, R.drawable.wyjsciexxx };
+            R.drawable.testxxx, R.drawable.statystykixxx, R.drawable.wyjsciexxx };
 
     ListView menu;
     List<Item> items;
@@ -90,6 +91,9 @@ public class ItemImageActivity extends Activity implements
             case "Graj" :
                 startActivity(new Intent (this,GameVariantActivity.class));
                 break;
+
+            case "Testy" :
+                startActivity(new Intent (this,TestActivity.class));
 
 
 

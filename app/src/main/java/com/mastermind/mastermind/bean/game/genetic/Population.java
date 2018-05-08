@@ -67,9 +67,14 @@ public class Population {
 
     }
 
+    public List<Genotype> getPopulationMembers() {
+        return populationMembers;
+    }
+
     public double getSummaryFitness() {
         return summaryFitness;
     }
+
 
     public void initPopulation(List<Genotype> prevAttempts , List<Integer> prevBlack, List<Integer> prevWhite){
 
@@ -94,9 +99,6 @@ public class Population {
 
     }
 
-    public List<Genotype> getPopulationMembers() {
-        return populationMembers;
-    }
 
     public void calcFitnessAll(List<Genotype> genotypes,List<Genotype> prevAttempts , List<Integer> prevBlack, List<Integer> prevWhite)
     {
@@ -114,21 +116,10 @@ public class Population {
         eliteSelection(); //obliczenie prawd. wybrania dla najlepszych osobnikow
         initNewPopulation(prevAttempts,prevBlack,prevWhite); //wylosowanie nowych osobnikow
         randNewPopulation(); //wylosowanie najlepszych osobnnikow
-
-        //populationMembers.clear();
-
-        this.populationMembers = newPopulationMembers; //po selekcji nowa populacja staje sie bazowa dla kolejnego obiegu algorytmu
-
-       // newPopulationMembers.clear();
-
         crossPopulation(); //krzyzowanie
         mutatePopulation(); //mutacja
-
-
+        this.populationMembers = newPopulationMembers; //sukcesja
         calcFitnessAll(populationMembers,prevAttempts,prevBlack,prevWhite);
-
-
-
 
     }
 
@@ -145,7 +136,6 @@ public class Population {
         minFitness = 999999.0;
         maxFitness = -999999.0;
 
-
         for(int i=0;i<populationSize;i++) {
             if (populationMembers.get(i).getFittness() > maxFitness)
             {
@@ -159,7 +149,6 @@ public class Population {
                 worstMember = populationMembers.get(i);
             }
         }
-
 
     }
 
@@ -193,21 +182,14 @@ public class Population {
 
         Random rand = new Random();
 
-
        for(int i=0;i<populationSize;i+=2){
 
                 Double random = ((double) rand.nextInt(1000)/1000);
-
-                if(random < crossProb){
-                    Log.i(Integer.toString(populationMembers.size()), "crossPopulation: ");
-                    swapColors(populationMembers.get(i),populationMembers.get(i+1),rand.nextInt(chromomoseSize-1));
+                if(random < crossProb) {
+                    swapColors(populationMembers.get(i), populationMembers.get(i + 1), rand.nextInt(chromomoseSize - 1));
 
                 }
-
         }
-
-
-
     }
 
     private void swapColors(Genotype genotype, Genotype genotype1, int colorCount) {
@@ -235,8 +217,6 @@ public class Population {
         double randMember;
 
         Random rand = new Random();
-
-
 
         for(int i=0 ; i<populationSize ; i++)
         {

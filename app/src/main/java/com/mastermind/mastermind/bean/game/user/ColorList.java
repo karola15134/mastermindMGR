@@ -19,9 +19,13 @@ public class ColorList {
 
     private List<ColorEnum> colors = new ArrayList<ColorEnum>();
 
+    private  List<ColorEnum> currentColors = new ArrayList<>();
+
     private List<ColorEnum> colorsRand = new ArrayList<ColorEnum>();
 
     private GameVariantEnum gameVariant;
+
+
 
 
     public ColorList(GameVariantEnum gameVariant) {
@@ -34,8 +38,9 @@ public class ColorList {
         colors.add(ColorEnum.BLUE);
         colors.add(ColorEnum.ORANGE);
         colors.add(ColorEnum.DARK_BLUE);
+        this.gameVariant = gameVariant;
 
-       this.gameVariant = gameVariant;
+        fillCurrentColors();
 
         Random gen = new Random();
 
@@ -64,6 +69,31 @@ public class ColorList {
         }
 
 
+    }
+
+    private void fillCurrentColors() {
+
+        switch(gameVariant.toString()) {
+
+            case "CLASSIC":
+
+                for(int i=0;i<6;i++)
+                {
+                    currentColors.add(colors.get(i));
+
+                }
+
+                break;
+
+            case "SUPER":
+
+                for(int i=0;i<8;i++)
+                {
+                    currentColors.add(colors.get(i));
+
+                }
+                break;
+        }
     }
 
     public ColorEnum getColor (){
@@ -96,5 +126,24 @@ public class ColorList {
         return colors;
     }
 
+    public List<ColorEnum> getCurrentColors() {
+        return currentColors;
+    }
 
+    public void setCurrentColors(List<ColorEnum> currentColors) {
+        this.currentColors = currentColors;
+    }
+
+    public ColorEnum[] copyLists(ColorEnum[] attempt) {
+
+        ColorEnum [] copy = new ColorEnum[attempt.length];
+
+        for(int i= 0 ;i< attempt.length ; i++)
+        {
+            copy[i] = attempt[i];
+        }
+
+        return copy;
+
+    }
 }

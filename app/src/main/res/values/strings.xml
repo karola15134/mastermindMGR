@@ -4,6 +4,7 @@
     <string name="Data"><i><b>Data</b></i></string>
     <string name="Wersja"><i><b>Wersja gry</b></i></string>
     <string name="Proby"><i><b>Ilość prób</b></i></string>
+    <string name="Test">Test algorytmu</string>
     <string name="Rozwiazanie"> <i><b> Rozwiązanie</b></i></string>
     <string-array name="spinnerItems">
         <item>Wszystkie</item>
