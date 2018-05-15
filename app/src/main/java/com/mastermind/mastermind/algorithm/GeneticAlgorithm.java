@@ -121,8 +121,7 @@ public class GeneticAlgorithm {
 
 
         addToStatistic(prevAttempt.size());
-
-        //endGame(prevAttempt);
+        endGame(prevAttempt);
 
     }
 

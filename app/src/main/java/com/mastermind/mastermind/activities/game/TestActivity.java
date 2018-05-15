@@ -143,6 +143,7 @@ public class TestActivity extends AppCompatActivity {
             allPrevAttempts = new ArrayList<>();
 
             for(int i=0;i<count;i++) {
+                Log.i("TEST COUNT",Integer.toString(i));
                 colorList = new ColorList(gameVariant);
                 colorsRandom = colorList.getColorsRand();
                 geneticAlgorithm = new GeneticAlgorithm(colorsRandom, crossProb, mutateProb, popSize, gameVariant, this);
@@ -251,23 +252,25 @@ public class TestActivity extends AppCompatActivity {
         sheet1.setColumnWidth(4, (15 * 500));
 
         Cell c2 = null;
+        Row row2 = null;
 
+        row2 = sheet1.createRow(1);
+        c2= row2.createCell(0);
+        c2.setCellValue(popSize);
 
+        c2= row2.createCell(1);
+        c2.setCellValue(crossProb);
 
+        c2= row2.createCell(2);
+        c2.setCellValue(mutateProb);
+
+        int j=2;
         for(int i=0;i<attempts.size();i++)
         {
-            Row row2 = sheet1.createRow(i+1);
-            c2= row2.createCell(0);
-            c2.setCellValue(popSize);
-
-            c2= row2.createCell(1);
-            c2.setCellValue(crossProb);
-
-            c2= row2.createCell(2);
-            c2.setCellValue(mutateProb);
-
+            row2 = sheet1.createRow(j);
             c2 = row2.createCell(3);
             c2.setCellValue(attempts.get(i).size());
+            j++;
 
         }
 
